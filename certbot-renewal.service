@@ -1,0 +1,9 @@
+# /etc/systemd/system/certbot-renewal.service
+
+[Unit]
+Description=Certbot Renewal
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/certbot renew --quiet --agree-tos
+ExecStartPost=/bin/systemctl reload nginx.service
